@@ -1,0 +1,232 @@
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url(../Fonts/SourceSansPro-Light.ttf);
+}
+
+/* ------------------ Réglages globaux --------------------------- */
+
+* {
+  margin: 0; /* beaucoup d'élément ont une margin naturelle et ca peut poser pb donc on reset tout */
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+h1 {
+  font-size: 3.4rem; /* toujours rem pour les font, 1 rem = 16 px */
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+p {
+  line-height: 36px;
+  margin: 25px 0; /* distance autour ; 25 = en haut en bas , 0 = droite et gauche */
+}
+
+.button {
+  border: 1px solid #ccc;
+  background: transparent;
+  border-radius: 50px; /* pour arrondir les boutons */
+  padding: 13px 30px; /* ses dimensions haut, coté, bas */
+  display: inline-block; /* a de bases ne sont pas en bloc, maintenant ils le sont et s'intégreront tel quel */
+  text-transform: uppercase; /* majusucle */
+  letter-spacing: 2px;
+  cursor: pointer;
+  font: 700 0.75rem "Source Sans Pro"; /* font-weight + font size + font family */
+  transition: 0.3s;
+}
+
+.button:hover,
+fotter a:hover {
+  border: 1px solid skyblue;
+  color: skyblue;
+  outline: none;
+}
+
+.container {
+  /* comment centrer dans le cas ou il y a qu'un seul enfant */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 55px;
+}
+
+.section1,
+.section2,
+.contact {
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.199); /* petite ombre à l'intérieur */
+}
+/* ---------------------------- Body -------------------------------------- */
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* ---------------------------- Header -------------------------------------- */
+
+header {
+  min-height: 100vh; /* virtual height, prends 100% de la taille de l'écran */
+  display: grid;
+  grid-template-columns: 50% 50%; /* il a 2 enfants donc je déclare 2 mesures*/
+}
+
+.img-banner {
+  background: url(../Img/banner.jpg) center/cover;
+}
+
+/* ---------------------------- Section 1 -------------------------------------- */
+
+.section1 {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  min-height: 400px;
+}
+
+.section1 .img {
+  background: url(../Img/img-left.jpg) center/cover;
+}
+
+/* ---------------------------- Section 2 -------------------------------------- */
+
+.section2 {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  min-height: 400px;
+}
+.section2 .img {
+  background: url(../Img/img-right.jpg) center/cover;
+}
+
+/* ---------------------------- Contact -------------------------------------- */
+
+.contact {
+  text-align: center;
+  padding: 60px 0px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100px 224px;
+  grid-template-areas:
+    "input1 input2"
+    "textarea textarea";
+  gap: 10px;
+  width: 85%;
+  margin: 30px auto;
+  max-width: 600px; /* pour ne pas qu'il soit trop grand en prenant 85% de largeur de page */
+}
+
+.textarea {
+  grid-area: textarea;
+}
+label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+input[type="text"], /* tous les input de type text */
+textarea {
+  width: 100%;
+  margin: 20px 0 40px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  transition: 0.2s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border: 1px solid skyblue;
+}
+
+textarea {
+  resize: none;
+  height: 180px;
+}
+
+/* ---------------------------- Footer -------------------------------------- */
+
+footer {
+  padding: 70px 0 90px;
+  position: relative;
+}
+
+footer:before {
+  content: "";
+  position: absolute; /* pour placer des éléments  en before ou after */
+  width: 90%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+  width: 33%; /* en mettant un width donc ca met l'élément directement a gauche il faut donc tjr recentré avec margin */
+  min-width: 300px;
+  margin: 0 auto; /* auto pour dire autant à gauche qu'à droite*/
+}
+
+footer a {
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+/* ---------------------------- RESPONSIVE -------------------------------------- */
+
+@media screen and (max-width: 768px) /* mettre ce code si mon écran est [0px;650px] */ {
+  header,
+  .section1,
+  .section2 {
+    display: block; /* é s'affichent en block tel qu'annoncé dans html */
+  }
+  header {
+    height: auto;
+  }
+  header .img-banner {
+    height: 50vh;
+    margin-top: 30px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  footer ul {
+    /* barre des liens */
+    min-width: 200px;
+  }
+
+  footer a {
+    /* contient les liens */
+    width: 30px;
+    height: 30px;
+  }
+
+  footer i {
+    /* contient l'icone */
+    font-size: 1.1rem;
+  }
+}
